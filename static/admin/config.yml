@@ -1,5 +1,5 @@
 backend:
-  name: test-repo
+  name: github
 
 media_folder: static/assets
 
@@ -12,4 +12,3 @@ collections:
       - { name: title, label: Title }
       - { date: date, label: Created At, widget: date }
       - { name: body, label: Post, widget: markdown }
-  
