@@ -3,7 +3,6 @@ backend:
   repo: matthewmagee05/retail-store-gatsby
 
 media_folder: static/assets
-public_folder: /assets
 
 collections:
   - name: post
