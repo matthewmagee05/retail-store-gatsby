@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Link from 'gatsby-link';
-import styled from 'styled-components';
-import Img from 'gatsby-image';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import Link from "gatsby-link";
+import styled from "styled-components";
+import Img from "gatsby-image";
 
-import Patriots from '../../images/pats.jpg';
+import logo from "../../images/logo.svg";
 
 const HeaderWrapper = styled.div`
   background: #524763;
   margin-bottom: 1.45rem;
   overflow: hidden;
   position: relative;
-  height: ${isHome => (isHome ? '70vh' : '20vh')};
+  height: ${({ isHome }) => (isHome ? "70vh" : "20vh")};
   h1 {
     img {
       height: 80px;
@@ -27,7 +27,6 @@ const HeaderContainer = styled.div`
   z-index: 2;
   display: flex;
   justify-content: space-between;
-
 `;
 
 const MainNav = styled.nav`
@@ -48,41 +47,46 @@ const MainNav = styled.nav`
     }
   }
 `;
+
 export default class Header extends Component {
   componentDidUpdate = (prevProps, prevState) => {
     const { location } = this.props;
     if (location.pathname !== prevProps.location.pathname) {
-      if (this.props.location.pathname === '/') {
-        this.wrapper.animate([{ height: '20vh' }, { height: '70vh' }], {
+      if (this.props.location.pathname === "/") {
+        this.wrapper.animate([{ height: "20vh" }, { height: "70vh" }], {
           duration: 300,
-          fill: 'forwards',
-          easing: 'cubic-bezier(0.86, 0, 0.07, 1)',
+          fill: "forwards",
+          easing: "cubic-bezier(0.86, 0, 0.07, 1)",
           iterations: 1
         });
       } else {
-        this.wrapper.animate([{ height: '70vh' }, { height: '20vh' }], {
+        this.wrapper.animate([{ height: "70vh" }, { height: "20vh" }], {
           duration: 300,
-          fill: 'forwards',
-          easing: 'cubic-bezier(0.86, 0, 0.07, 1)',
+          fill: "forwards",
+          easing: "cubic-bezier(0.86, 0, 0.07, 1)",
           iterations: 1
         });
       }
     }
   };
+
   render() {
     const { data, location } = this.props;
     return (
-      <HeaderWrapper isHome={location.pathname === '/'} ref={wrapper => (this.wrapper = ReactDOM.findDOMNode(wrapper))}>
+      <HeaderWrapper
+        isHome={location.pathname === "/"}
+        ref={wrapper => (this.wrapper = ReactDOM.findDOMNode(wrapper))}
+      >
         <HeaderContainer>
           <h1 style={{ margin: 0 }}>
             <Link
               to="/"
               style={{
-                color: 'white',
-                textDecoration: 'none'
+                color: "white",
+                textDecoration: "none"
               }}
             >
-              <img src={Patriots} alt="Patriots logo" />
+              <img src={logo} alt="Level Up Logo" />
             </Link>
           </h1>
           <MainNav>
@@ -98,11 +102,11 @@ export default class Header extends Component {
         </HeaderContainer>
         <Img
           style={{
-            position: 'absolute',
+            position: "absolute",
             left: 0,
             top: 0,
-            width: '100%',
-            height: '100%',
+            width: "100%",
+            height: "100%",
             opacity: 0.3
           }}
           sizes={data.background.sizes}
